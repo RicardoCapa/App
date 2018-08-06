@@ -1,7 +1,7 @@
-FROM nginx:latest
-
-COPY PaginaButtom.html /usr/share/nginx/html
-
-EXPOSE 80 443 	
-
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:4.2
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["node","servidor.js"]
